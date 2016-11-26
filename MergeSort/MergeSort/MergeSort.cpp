@@ -7,9 +7,12 @@
 #include <string>
 #include "stdafx.h"
 #include<stdlib.h>
-#include<stdio.h>
+
 #include <vector>
+#include<stdio.h>
+#include <time.h>
 using namespace std;
+
 
 /* Function to print an array */
 void printArray(int A[], int size)
@@ -81,31 +84,31 @@ void MergeSortAlg(T a[], size_t l)
 	}
 }
 
-#define N 80
+#define N 20000
 int main()
 {
-	FILE *file;
-	FILE *fileout;
 	int arr[N];
-
-	file = fopen("input.txt", "r");
-	fileout = fopen("output.txt", "w+");
-
-	for (int i = 0; i < 80; i++) {
+	
+	FILE *file;
+	file = fopen("dsd.txt", "r");
+	for (int i = 0; i < N; i++) {
 		fscanf(file, "%d", &arr[i]);
 	}
 	fclose(file);
 
+	clock_t time = clock();
 	int arr_size = sizeof(arr) / sizeof(arr[0]);
-
-	printf("Given array is \n");
-	printArray(arr, arr_size);
 	MergeSortAlg(arr, arr_size);
-	printf("\nSorted array is \n");
-	printArray(arr, arr_size);
+	time = clock() - time;
+	double ms = double(time) / CLOCKS_PER_SEC * 1000;
 
-	for (int i = 0; i < 80; i++) {
+	FILE *fileout;
+	fileout = fopen("output.txt", "w+");
+	printf("Execution time = %f\n", ms);	
+	for (int i = 0; i < N; i++) {
 		fprintf(fileout, "%d%s", arr[i], " ");
 	}
 	fclose(fileout);
+
+	return getchar();
 }
