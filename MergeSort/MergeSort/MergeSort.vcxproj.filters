@@ -22,9 +22,6 @@
     <Text Include="output.txt">
       <Filter>Source Files</Filter>
     </Text>
-    <Text Include="dsd.txt">
-      <Filter>Source Files</Filter>
-    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
